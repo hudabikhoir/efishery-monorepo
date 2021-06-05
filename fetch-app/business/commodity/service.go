@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strconv"
 
+	golinq "github.com/ahmetb/go-linq/v3"
+
 	validator "github.com/go-playground/validator/v10"
 )
 
@@ -18,6 +20,19 @@ type Repository interface {
 //Service outgoing port for commodity
 type Service interface {
 	GetCommodities() ([]Commodity, error)
+	GetReportCommodities() ([]CommodityReport, error)
+}
+
+type CommodityGolinq struct {
+	UUID         string
+	Commodity    string
+	Province     string
+	City         string
+	Size         string
+	Price        string
+	ConvertPrice string
+	ParsedAt     string
+	Timestamp    string
 }
 
 //=============== The implementation of those interface put below =======================
@@ -66,4 +81,72 @@ func (s *service) GetCommodities() ([]Commodity, error) {
 		commodities = append(commodities, commodity)
 	}
 	return commodities, err
+}
+
+func (s *service) GetReportCommodities() ([]CommodityReport, error) {
+	commoditiesRes, err := s.repository.FetchCommodities()
+	var reports []CommodityReport
+
+	// Use golinq to create query from struct
+	var query []golinq.Group
+	golinq.From(commoditiesRes).GroupByT(
+		func(p Commodity) string { return p.Province },
+		func(p Commodity) string { return p.Size },
+	).OrderByT(
+		func(g golinq.Group) string { return g.Key.(string) },
+	).ToSlice(&query)
+
+	// parse query to report data
+	reports = parseGroupToReport(query)
+
+	return reports, err
+}
+
+// parseGroupToReport function to parse query group to report data
+func parseGroupToReport(query []golinq.Group) []CommodityReport {
+	var reports []CommodityReport
+	var report CommodityReport
+
+	for _, comGroup := range query {
+		// sorted size
+		size := parseListGroupToFloat(comGroup.Group)
+
+		max := golinq.From(size).Max()
+		maxInt, _ := max.(float64)
+
+		min := golinq.From(size).Min()
+		minInt, _ := min.(float64)
+
+		average := golinq.From(size).Average()
+
+		median := len(size) / 2
+
+		report.Province = fmt.Sprintf("%v", comGroup.Key)
+		report.Max = maxInt
+		report.Min = minInt
+		report.Average = average
+		report.Median = median
+
+		reports = append(reports, report)
+	}
+
+	return reports
+}
+
+// parseListGroupToFloat function to parse interface to float and then sort it!
+func parseListGroupToFloat(listGroup []interface{}) []float64 {
+	var szFloat []float64
+	var sizeSorted []float64
+	for _, val := range listGroup {
+		sizeStr := val.(string)
+		sizeFloat, _ := strconv.ParseFloat(sizeStr, 64)
+		szFloat = append(szFloat, sizeFloat)
+	}
+	golinq.From(szFloat).
+		Sort(
+			func(i interface{}, j interface{}) bool { return i.(float64) < j.(float64) },
+		).
+		ToSlice(&sizeSorted)
+
+	return sizeSorted
 }
