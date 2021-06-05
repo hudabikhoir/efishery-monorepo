@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"efishery/api"
+	"efishery/app/modules"
 	"efishery/config"
 	"efishery/util"
 	"fmt"
@@ -21,6 +23,9 @@ func main() {
 	//initialize database connection based on given config
 	dbCon := util.NewDatabaseConnection(config)
 
+	//initiate item repository
+	controllers := modules.RegisterController(dbCon)
+
 	//create echo http
 	e := echo.New()
 
@@ -38,6 +43,9 @@ Kita abadi.
 -- Sapardi Djoko Damono`
 		return c.String(http.StatusOK, message)
 	})
+
+	//register API path and handler
+	api.RegisterPath(e, controllers)
 
 	// run server
 	go func() {
