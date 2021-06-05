@@ -16,6 +16,7 @@ func RegisterPath(e *echo.Echo, ctrl Controller) {
 	//commodity
 	commodityV1 := e.Group("/v1/commodities")
 	commodityV1.GET("", ctrl.CommodityController.GetAllCommodities)
+	commodityV1.GET("/report", ctrl.CommodityController.GetReportCommodities)
 
 	//health check
 	e.GET("/health", func(c echo.Context) error {

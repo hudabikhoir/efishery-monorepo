@@ -34,3 +34,14 @@ func (controller *Controller) GetAllCommodities(c echo.Context) error {
 	response := response.NewGetCommoditieResponse(commoditys)
 	return c.JSON(http.StatusOK, response)
 }
+
+//GetReportCommodities Get commodity by ID echo handler
+func (controller *Controller) GetReportCommodities(c echo.Context) error {
+	commodities, err := controller.service.GetReportCommodities()
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, common.NewInternalServerErrorResponse())
+	}
+
+	response := response.NewGetCommoditiesReportResponse(commodities)
+	return c.JSON(http.StatusOK, response)
+}
