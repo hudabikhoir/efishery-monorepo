@@ -14,6 +14,7 @@ type Repository interface {
 	//FetchCommodities is a function to fetch commodities from resource data
 	FetchCommodities() ([]Commodity, error)
 
+	//FetchPriceConverter is a function to fetch price converter from resource data
 	FetchPriceConverter() (float64, error)
 }
 
@@ -67,18 +68,21 @@ func (s *service) GetCommodities() ([]Commodity, error) {
 	}
 
 	for _, val := range commoditiesRes {
-		price, _ := strconv.ParseFloat(val.Price, 64)
-		commodity.ConvertPrice = fmt.Sprintf("%.2f", (price / convertPrice))
-		commodity.UUID = val.UUID
-		commodity.Commodity = val.Commodity
-		commodity.Province = val.Province
-		commodity.City = val.City
-		commodity.Size = val.Size
-		commodity.Price = val.Price
-		commodity.ParsedAt = val.ParsedAt
-		commodity.Timestamp = val.Timestamp
+		// only showing used data
+		if val.UUID != "" {
+			price, _ := strconv.ParseFloat(val.Price, 64)
+			commodity.ConvertPrice = fmt.Sprintf("%.2f", (price / convertPrice))
+			commodity.UUID = val.UUID
+			commodity.Commodity = val.Commodity
+			commodity.Province = val.Province
+			commodity.City = val.City
+			commodity.Size = val.Size
+			commodity.Price = val.Price
+			commodity.ParsedAt = val.ParsedAt
+			commodity.Timestamp = val.Timestamp
 
-		commodities = append(commodities, commodity)
+			commodities = append(commodities, commodity)
+		}
 	}
 	return commodities, err
 }

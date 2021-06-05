@@ -1,11 +1,14 @@
 package commodity
 
 import (
+	"bufio"
+	"bytes"
 	"efishery/business/commodity"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/http/httputil"
 )
 
 type HTTPRepository struct {
@@ -69,23 +72,48 @@ func (repo *HTTPRepository) FetchCommodities() ([]commodity.Commodity, error) {
 
 //FetchPriceConverter Find commodity based on given ID. Its return nil if not found
 func (repo *HTTPRepository) FetchPriceConverter() (float64, error) {
-	response, err := http.Get("https://free.currconv.com/api/v7/convert?q=USD_IDR&compact=ultra&apiKey=7b69cf393e72fc95d3ab")
+	req, err := http.NewRequest("GET", "https://free.currconv.com/api/v7/convert/", nil)
 
-	fmt.Println(response, err)
 	if err != nil {
 		return 0, err
 	}
 
-	responseData, err := ioutil.ReadAll(response.Body)
+	req.AddCookie(&http.Cookie{Name: "c", Value: "ccc"})
+	q := req.URL.Query()
+	q.Add("apiKey", "7b69cf393e72fc95d3ab")
+	q.Add("compact", "ultra")
+	q.Add("q", "USD_IDR")
+	req.URL.RawQuery = q.Encode()
+
+	fmt.Println(req.URL.String())
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return 0, err
 	}
 
-	fmt.Println(string(responseData))
+	// you can set turn on/off cache body with set DumpResponse parameter to true or false
+	body, err := httputil.DumpResponse(resp, true)
+	if err != nil {
+		return 0, err
+	}
+
+	// wrap the cached response
+	r := bufio.NewReader(bytes.NewReader(body))
+
+	// ReadResponse by default assumes the request for the response was a "GET" requested
+	// If you want the method to be different, you must pass an http.Request to ReadResponse (instead of nil)
+	resp, err = http.ReadResponse(r, nil)
+	if err != nil {
+		return 0, err
+	}
+
+	responseData, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return 0, err
+	}
+
 	var responseObject PriceConvertResponse
 	json.Unmarshal(responseData, &responseObject)
 
-	fmt.Println(responseObject.PriceUSD)
-
-	return responseObject.PriceUSD, nil
+	return 0, nil
 }
