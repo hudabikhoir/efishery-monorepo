@@ -18,7 +18,7 @@ type GetCommodityByIDResponse struct {
 }
 
 //GetCommoditieResponse Get commoditie by tag response payload
-type GetCommoditieResponse struct {
+type GetCommoditiesResponse struct {
 	Commodities []*GetCommodityByIDResponse `json:"commodities"`
 }
 
@@ -39,7 +39,7 @@ func NewGetCommodityByIDResponse(commodity commodity.Commodity) *GetCommodityByI
 }
 
 //NewGetCommoditieResponse construct GetCommoditieResponse
-func NewGetCommoditieResponse(commodities []commodity.Commodity) *GetCommoditieResponse {
+func NewGetCommoditiesResponse(commodities []commodity.Commodity) *GetCommoditiesResponse {
 	var commoditiesResponses []*GetCommodityByIDResponse
 	commoditiesResponses = make([]*GetCommodityByIDResponse, 0)
 
@@ -47,7 +47,7 @@ func NewGetCommoditieResponse(commodities []commodity.Commodity) *GetCommoditieR
 		commoditiesResponses = append(commoditiesResponses, NewGetCommodityByIDResponse(commodities))
 	}
 
-	return &GetCommoditieResponse{
+	return &GetCommoditiesResponse{
 		commoditiesResponses,
 	}
 }

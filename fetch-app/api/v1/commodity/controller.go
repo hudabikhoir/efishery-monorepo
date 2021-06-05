@@ -26,12 +26,12 @@ func NewController(service commodityBusiness.Service) *Controller {
 
 //GetAllCommodities Get commodity by ID echo handler
 func (controller *Controller) GetAllCommodities(c echo.Context) error {
-	commoditys, err := controller.service.GetCommodities()
+	commodities, err := controller.service.GetCommodities()
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, common.NewInternalServerErrorResponse())
 	}
 
-	response := response.NewGetCommoditieResponse(commoditys)
+	response := response.NewGetCommoditiesResponse(commodities)
 	return c.JSON(http.StatusOK, response)
 }
 
