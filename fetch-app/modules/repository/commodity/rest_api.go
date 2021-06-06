@@ -114,6 +114,5 @@ func (repo *HTTPRepository) FetchPriceConverter() (float64, error) {
 
 	var responseObject PriceConvertResponse
 	json.Unmarshal(responseData, &responseObject)
-
-	return 0, nil
+	return responseObject.PriceUSD, nil
 }
