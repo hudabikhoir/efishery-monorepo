@@ -24,18 +24,6 @@ type Service interface {
 	GetReportCommodities() ([]CommodityReport, error)
 }
 
-type CommodityGolinq struct {
-	UUID         string
-	Commodity    string
-	Province     string
-	City         string
-	Size         string
-	Price        string
-	ConvertPrice string
-	ParsedAt     string
-	Timestamp    string
-}
-
 //=============== The implementation of those interface put below =======================
 
 type service struct {

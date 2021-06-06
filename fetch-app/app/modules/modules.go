@@ -25,7 +25,7 @@ func SetErrorHandler(e *echo.Echo) {
 func RegisterController(dbCon *util.DatabaseConnection) api.Controller {
 
 	//initiate commodity
-	commodityPermitRepo := commodityRepo.RepositoryFactory(dbCon)
+	commodityPermitRepo := commodityRepo.RepositoryFactory()
 	commodityPermitService := commodityBussiness.NewService(commodityPermitRepo)
 	commodityPermitControllerV1 := commodityCtrlV1.NewController(commodityPermitService)
 
