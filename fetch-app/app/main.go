@@ -14,6 +14,9 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/labstack/gommon/log"
+
+	authBusiness "efishery/business/auth"
+	authRepo "efishery/modules/repository/auth"
 )
 
 func main() {
@@ -44,8 +47,10 @@ Kita abadi.
 		return c.String(http.StatusOK, message)
 	})
 
+	authPermitRepo := authRepo.RepositoryFactory()
+	authService := authBusiness.NewService(authPermitRepo)
 	//register API path and handler
-	api.RegisterPath(e, controllers)
+	api.RegisterPath(e, controllers, authService)
 
 	// run server
 	go func() {
