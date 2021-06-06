@@ -1,0 +1,661 @@
+{
+	"info": {
+		"_postman_id": "07bb6b35-4d7f-461f-935f-4efd91f8ca94",
+		"name": "Efishery Tech Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Nur Huda Bikhoir\",\n    \"phone\": \"081230839311\",\n    \"role\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_auth}}/registration",
+							"host": [
+								"{{url_auth}}"
+							],
+							"path": [
+								"registration"
+							]
+						},
+						"description": "enpoint to register new user"
+					},
+					"response": [
+						{
+							"name": "success_response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Nur Huda Bikhoir\",\n    \"phone\": \"081230839311\",\n    \"role\": \"1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_auth}}/registration",
+									"host": [
+										"{{url_auth}}"
+									],
+									"path": [
+										"registration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "737"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.8.2"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jun 2021 16:08:46 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"00\",\n    \"message\": \"User Nur Huda Bikhoir was created\",\n    \"data\": {\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyMjk5NTcyNiwianRpIjoiZWUyMTc1NTMtZTVjMS00ODM0LWE0ZmUtMmZmZDZlYzBiYWQyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjA4MTIzMDgzOTMxMSIsIm5iZiI6MTYyMjk5NTcyNiwiZXhwIjoxNjIyOTk2NjI2fQ.1baqCf2ZC6r_4pvzi2YcIagA4UFndfFkGAGOTj2A5EQ\",\n        \"refresh_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyMjk5NTcyNiwianRpIjoiZTc4YmE0OGYtYTJmZS00Yzg4LWJhOWItOWZhY2MwZTIzOTk3IiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiIwODEyMzA4MzkzMTEiLCJuYmYiOjE2MjI5OTU3MjYsImV4cCI6MTYyNTU4NzcyNn0.D8MplEFvd0qAS4VwjaA2N7iZyacUnJ9Pr_nMgE6GPs8\",\n        \"password\": \"EP95\"\n    }\n}"
+						},
+						{
+							"name": "duplicate_phone_number_response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Nur Huda Bikhoir\",\n    \"phone\": \"081230839311\",\n    \"role\": \"1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_auth}}/registration",
+									"host": [
+										"{{url_auth}}"
+									],
+									"path": [
+										"registration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.8.2"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jun 2021 16:13:48 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 500,\n    \"message\": \"User Nur Huda Bikhoir with number phone 081230839311 is already exists\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyMjk4MTQwNCwianRpIjoiM2VhOTA3MzUtMTQ4ZC00ZDJjLWJlMGEtMThkMjBiMDZkMWQ0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEyMzQyMzEyODAiLCJuYmYiOjE2MjI5ODE0MDQsImV4cCI6MTYyMjk4MjMwNH0.Ghtxpjl7KTdcPCrwm2Lf-eLd5orIMhZP0flbXfllI1U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\": \"081230839311\",\n    \"password\": \"EP95\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_auth}}/login",
+							"host": [
+								"{{url_auth}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success_response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"081230839311\",\n    \"password\": \"EP95\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_auth}}/login",
+									"host": [
+										"{{url_auth}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "667"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.8.2"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jun 2021 16:13:01 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Logged with phone number 081230839311\",\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyMjk5NTk4MSwianRpIjoiMzBhZmI2N2ItYWM1Zi00YWVlLWFjMGItYmY0NDY2MGNiMzc1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjA4MTIzMDgzOTMxMSIsIm5iZiI6MTYyMjk5NTk4MSwiZXhwIjoxNjIyOTk2ODgxfQ.WPGIGMItiQILhQsmglu5KwxqxbATQkDk1C9ZcjdiwrA\",\n    \"refresh_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyMjk5NTk4MSwianRpIjoiZDRlOTc4YzgtZGFjOS00ZmU2LTgwNDItOTYwZTc2ZGU0ZjM5IiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiIwODEyMzA4MzkzMTEiLCJuYmYiOjE2MjI5OTU5ODEsImV4cCI6MTYyNTU4Nzk4MX0.gYYxZ-Oki-gyqLLWe6JurLVGzbBnrZUCHQKh6_PtAYs\"\n}"
+						},
+						{
+							"name": "incorrect_username_password_response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"081230839311\",\n    \"password\": \"EP96\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_auth}}/login",
+									"host": [
+										"{{url_auth}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.8.2"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jun 2021 16:16:01 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 500,\n    \"message\": \"Incorrect username or password\"\n}"
+						}
+					]
+				},
+				{
+					"name": "me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_auth}}/me",
+							"host": [
+								"{{url_auth}}"
+							],
+							"path": [
+								"me"
+							]
+						},
+						"description": "endpoint profile user when they are login"
+					},
+					"response": [
+						{
+							"name": "success_response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_auth}}/me",
+									"host": [
+										"{{url_auth}}"
+									],
+									"path": [
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "155"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.8.2"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jun 2021 16:18:40 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"00\",\n    \"message\": \"Success\",\n    \"data\": {\n        \"phone\": \"081230839311\",\n        \"name\": \"Nur Huda Bikhoir\",\n        \"role\": 1\n    }\n}"
+						},
+						{
+							"name": "invalid_token_response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_auth}}/me",
+									"host": [
+										"{{url_auth}}"
+									],
+									"path": [
+										"me"
+									]
+								}
+							},
+							"status": "UNPROCESSABLE ENTITY",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.1 Python/3.8.2"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jun 2021 16:19:12 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Signature verification failed\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Fetch commodity",
+			"item": [
+				{
+					"name": "all commodities",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_fetch}}/v1/commodities",
+							"host": [
+								"{{url_fetch}}"
+							],
+							"path": [
+								"v1",
+								"commodities"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "missing_header_response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_fetch}}/v1/commodities",
+									"host": [
+										"{{url_fetch}}"
+									],
+									"path": [
+										"v1",
+										"commodities"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jun 2021 16:20:08 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"message\": \"Missing header data\"\n}"
+						},
+						{
+							"name": "token_has_expired_response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_fetch}}/v1/commodities",
+									"host": [
+										"{{url_fetch}}"
+									],
+									"path": [
+										"v1",
+										"commodities"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jun 2021 16:21:10 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"message\": \"Token has expired\"\n}"
+						},
+						{
+							"name": "success_response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_fetch}}/v1/commodities",
+									"host": [
+										"{{url_fetch}}"
+									],
+									"path": [
+										"v1",
+										"commodities"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jun 2021 16:41:48 GMT"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"00\",\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"uuid\": \"0c192840-7ee4-11ea-b3e1-e335da5df3hj\",\n            \"commodity\": \"Cupang leher kanan\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"CIMAHI\",\n            \"size\": \"101\",\n            \"idr\": \"20100\",\n            \"usd\": \"1.41\",\n            \"parsed_at\": \"2021-06-01T23:05:14+07:00\",\n            \"timestamp\": \"1622563514\"\n        },\n        {\n            \"uuid\": \"06d33985-cc46-4829-bc46-ca81efd3d936\",\n            \"commodity\": \"Arwana\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"40\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2021-04-14T13:04:55+07:00\",\n            \"timestamp\": \"1618380295\"\n        },\n        {\n            \"uuid\": \"ee264a90-906a-466b-a7e2-333b7eee755d\",\n            \"commodity\": \"Gabus\",\n            \"province\": \"JAWA TENGAH\",\n            \"city\": \"PEMALANG\",\n            \"size\": \"180\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2020-06-07T16:41:26.328Z\",\n            \"timestamp\": \"1591522886328\"\n        },\n        {\n            \"uuid\": \"fdce108e-70f6-4ae3-b1ce-4445484c5f8d\",\n            \"commodity\": \"Lele\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"CIREBON\",\n            \"size\": \"50\",\n            \"idr\": \"50000\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2020-06-08T10:45:53.965Z\",\n            \"timestamp\": \"1591587953965\"\n        },\n        {\n            \"uuid\": \"kotlin.random.XorWowRandom@812983c\",\n            \"commodity\": \"Gabus\",\n            \"province\": \"BALI\",\n            \"city\": \"BULELENG\",\n            \"size\": \"130\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2020-06-08T10:45:53.965Z\",\n            \"timestamp\": \"1591587953965\"\n        },\n        {\n            \"uuid\": \"kotlin.random.XorWowRandom@64a9d2f\",\n            \"commodity\": \"Gabus\",\n            \"province\": \"BALI\",\n            \"city\": \"BULELENG\",\n            \"size\": \"140\",\n            \"idr\": \"25000\",\n            \"usd\": \"1.75\",\n            \"parsed_at\": \"2020-06-08T10:46:21.374Z\",\n            \"timestamp\": \"1591587981374\"\n        },\n        {\n            \"uuid\": \"kotlin.random.XorWowRandom@ea1ec3b\",\n            \"commodity\": \"Bandeng\",\n            \"province\": \"SULAWESI BARAT\",\n            \"city\": \"MAMUJU UTARA\",\n            \"size\": \"140\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2020-06-08T10:46:21.374Z\",\n            \"timestamp\": \"1591587981374\"\n        },\n        {\n            \"uuid\": \"e776757d-2547-44d8-84fe-1258b5ec945c\",\n            \"commodity\": \"Sepat\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"130\",\n            \"idr\": \"23000\",\n            \"usd\": \"1.61\",\n            \"parsed_at\": \"2020-06-08T10:46:21.374Z\",\n            \"timestamp\": \"1591587981374\"\n        },\n        {\n            \"uuid\": \"a9e10e7d-d385-49b5-ac55-fe6d04f300af\",\n            \"commodity\": \"Patin Albino\",\n            \"province\": \"LAMPUNG\",\n            \"city\": \"LAMPUNG TIMUR\",\n            \"size\": \"120\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2020-06-08T12:14:31.719Z\",\n            \"timestamp\": \"1591593271719\"\n        },\n        {\n            \"uuid\": \"57d8839f-6583-46c9-8e5d-67175363332d\",\n            \"commodity\": \"Teri\",\n            \"province\": \"BANTEN\",\n            \"city\": \"CIREBON\",\n            \"size\": \"50\",\n            \"idr\": \"\",\n            \"usd\": \"0.00\",\n            \"parsed_at\": \"2020-06-09T15:08:58.122Z\",\n            \"timestamp\": \"1591690138122\"\n        },\n        {\n            \"uuid\": \"465847ac-39c6-468a-8776-5633779fdbf2\",\n            \"commodity\": \"Lele\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"CIREBON\",\n            \"size\": \"50\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2020-06-10T12:52:59+07:00\",\n            \"timestamp\": \"1591768379\"\n        },\n        {\n            \"uuid\": \"653f5092-eb78-4cb8-9d92-ce95c5d1b628\",\n            \"commodity\": \"Lele\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"30\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2020-06-10T12:52:59+07:00\",\n            \"timestamp\": \"1591768379\"\n        },\n        {\n            \"uuid\": \"8034160b-7c07-4213-b359-68667f487445\",\n            \"commodity\": \"Tiger FIsh\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"PANGANDARAN\",\n            \"size\": \"15\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2020-06-10T12:53:28+07:00\",\n            \"timestamp\": \"1591768408\"\n        },\n        {\n            \"uuid\": \"6ab51024-5126-4e68-ac8b-3fc4c575ab99\",\n            \"commodity\": \"Sepat\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"30\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2020-06-10T12:53:28+07:00\",\n            \"timestamp\": \"1591768408\"\n        },\n        {\n            \"uuid\": \"ff8e461c-910b-4d11-b531-8494c1c7da2e\",\n            \"commodity\": \"Gabus\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"70\",\n            \"idr\": \"30000\",\n            \"usd\": \"2.11\",\n            \"parsed_at\": \"2020-06-28T14:53:22+0800\",\n            \"timestamp\": \"1593327202\"\n        },\n        {\n            \"uuid\": \"6ad0f00b-ce10-401f-8945-179aad7d906d\",\n            \"commodity\": \"Kakap Merah\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"90\",\n            \"idr\": \"300000\",\n            \"usd\": \"21.06\",\n            \"parsed_at\": \"2020-07-25T01:04:17.043Z\",\n            \"timestamp\": \"1595639057043\"\n        },\n        {\n            \"uuid\": \"8616b242-a45d-4718-873c-3cb43bdc0f08\",\n            \"commodity\": \"Cumi\",\n            \"province\": \"JAWA TIMUR\",\n            \"city\": \"PROBOLINGGO\",\n            \"size\": \"50\",\n            \"idr\": \"45000\",\n            \"usd\": \"3.16\",\n            \"parsed_at\": \"2020-07-27T01:11:05+07:00\",\n            \"timestamp\": \"1595787065171\"\n        },\n        {\n            \"uuid\": \"f4902b55-714b-4174-a300-68601c28dabb\",\n            \"commodity\": \"Lele Jumbo\",\n            \"province\": \"JAWA TENGAH\",\n            \"city\": \"PEMALANG\",\n            \"size\": \"180\",\n            \"idr\": \"13000\",\n            \"usd\": \"0.91\",\n            \"parsed_at\": \"2020-07-27T08:10:42+07:00\",\n            \"timestamp\": \"1595812242590\"\n        },\n        {\n            \"uuid\": \"7872addb-b176-4536-964f-d4b304f1fab9\",\n            \"commodity\": \"Lele Mini\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"40\",\n            \"idr\": \"12300\",\n            \"usd\": \"0.86\",\n            \"parsed_at\": \"2020-07-27T08:40:37+07:00\",\n            \"timestamp\": \"1595814037328\"\n        },\n        {\n            \"uuid\": \"6a73921f-ff23-465b-976c-a248c88bcfbf\",\n            \"commodity\": \"Lele\",\n            \"province\": \"LAMPUNG\",\n            \"city\": \"LAMPUNG TIMUR\",\n            \"size\": \"190\",\n            \"idr\": \"76000\",\n            \"usd\": \"5.33\",\n            \"parsed_at\": \"2020-07-27T08:55:29+07:00\",\n            \"timestamp\": \"1595814929621\"\n        },\n        {\n            \"uuid\": \"7cb42002-cbc9-4b8f-bc88-8ad7702df9ba\",\n            \"commodity\": \"Salmon\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"30\",\n            \"idr\": \"24500\",\n            \"usd\": \"1.72\",\n            \"parsed_at\": \"2020-07-28T17:52:00+07:00\",\n            \"timestamp\": \"1595933520685\"\n        },\n        {\n            \"uuid\": \"17715ef8-0ae7-459e-89ad-08356fa6a679\",\n            \"commodity\": \"Dori\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"30\",\n            \"idr\": \"25000\",\n            \"usd\": \"1.75\",\n            \"parsed_at\": \"2020-07-28T17:59:15+07:00\",\n            \"timestamp\": \"1595933955212\"\n        },\n        {\n            \"uuid\": \"cebac08a-0594-4ffe-a9ad-ebe34b93722c\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"30\",\n            \"idr\": \"10000\",\n            \"usd\": \"0.70\",\n            \"parsed_at\": \"2020-07-30T11:41:55+07:00\",\n            \"timestamp\": \"1596084115\"\n        },\n        {\n            \"uuid\": \"0257bad9-4390-4560-8868-fd3a6704b70f\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"10\",\n            \"idr\": \"50000\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2020-08-01T16:45:39.904Z\",\n            \"timestamp\": \"1596300339904\"\n        },\n        {\n            \"uuid\": \"239ab833-6a5a-4f4f-b9e3-68351374ac9d\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"10\",\n            \"idr\": \"50000\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2020-08-01T16:46:35.889Z\",\n            \"timestamp\": \"1596300395889\"\n        },\n        {\n            \"uuid\": \"239ab833-6a5a-4f4f-b9e3-68351374ac9d\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"10\",\n            \"idr\": \"50000\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2020-08-01T16:46:35.889Z\",\n            \"timestamp\": \"1596300395889\"\n        },\n        {\n            \"uuid\": \"239ab833-6a5a-4f4f-b9e3-68351374ac9d\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"10\",\n            \"idr\": \"50000\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2020-08-01T16:46:35.889Z\",\n            \"timestamp\": \"1596300395889\"\n        },\n        {\n            \"uuid\": \"239ab833-6a5a-4f4f-b9e3-68351374ac9d\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"10\",\n            \"idr\": \"50000\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2020-08-01T16:46:35.889Z\",\n            \"timestamp\": \"1596300395889\"\n        },\n        {\n            \"uuid\": \"a0e4cf04-f432-494d-8eb2-80a26e40d2f7\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"10\",\n            \"idr\": \"50000\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2020-08-01T16:51:04.224Z\",\n            \"timestamp\": \"1596300664224\"\n        },\n        {\n            \"uuid\": \"5dfffcbe-bb4d-42c3-9c89-2f3fd28261b0\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"10\",\n            \"idr\": \"50000\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2020-08-01T16:53:37.621Z\",\n            \"timestamp\": \"1596300817621\"\n        },\n        {\n            \"uuid\": \"f2793180-fb54-4294-ae5f-ed1d218c2d61\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"10\",\n            \"idr\": \"50000\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2020-08-01T17:39:03.894Z\",\n            \"timestamp\": \"1596303543894\"\n        },\n        {\n            \"uuid\": \"d6b1625e-d495-4c98-9a9b-964c44089941\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"10\",\n            \"idr\": \"50000\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2020-08-01T17:48:38.789Z\",\n            \"timestamp\": \"1596304118789\"\n        },\n        {\n            \"uuid\": \"f64cb9b6-91e0-46e1-a889-fda2d49f842b\",\n            \"commodity\": \"Cupang Merah\",\n            \"province\": \"DKI JAKARTA\",\n            \"city\": \"JAKARTA SEELATAN\",\n            \"size\": \"198\",\n            \"idr\": \"200000\",\n            \"usd\": \"14.04\",\n            \"parsed_at\": \"2021-01-21T08:50:33.523Z\",\n            \"timestamp\": \"1611219033524\"\n        },\n        {\n            \"uuid\": \"c45a60d5-de66-42a9-ade9-3a117eb4d2bf\",\n            \"commodity\": \"Udang Vannamee\",\n            \"province\": \"BALI\",\n            \"city\": \"BULELENG\",\n            \"size\": \"222\",\n            \"idr\": \"50000\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2021-01-21T09:12:29.129Z\",\n            \"timestamp\": \"1611220349129\"\n        },\n        {\n            \"uuid\": \"0b455684-19b3-401e-a57f-e50139756c97\",\n            \"commodity\": \"Gabus\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"10\",\n            \"idr\": \"50000\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2020-08-27T09:04:32.431Z\",\n            \"timestamp\": \"1598519072431\"\n        },\n        {\n            \"uuid\": \"92049508-a429-4924-b826-d8e0e1a5db55\",\n            \"commodity\": \"Etong\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BALEENDAH INDAH\",\n            \"size\": \"40\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2020-08-27T09:04:32.431Z\",\n            \"timestamp\": \"1598519072432\"\n        },\n        {\n            \"uuid\": \"dc1d265d-ffca-4a2e-9f1f-36068381d1c3\",\n            \"commodity\": \"Patin\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"40\",\n            \"idr\": \"5000\",\n            \"usd\": \"0.35\",\n            \"parsed_at\": \"2020-10-02T09:46:13.652Z\",\n            \"timestamp\": \"1601631973652\"\n        },\n        {\n            \"uuid\": \"b4e78169-e4db-42a4-b105-5fb43524671c\",\n            \"commodity\": \"Etong\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"40\",\n            \"idr\": \"25000\",\n            \"usd\": \"1.75\",\n            \"parsed_at\": \"2020-10-05T04:00:29.721Z\",\n            \"timestamp\": \"1601870429721\"\n        },\n        {\n            \"uuid\": \"b4afd9a8-68b6-413e-b0bd-200d0baa21ff\",\n            \"commodity\": \"Selar\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"TASIKMALAYA\",\n            \"size\": \"40\",\n            \"idr\": \"240000\",\n            \"usd\": \"16.85\",\n            \"parsed_at\": \"2020-10-05T04:00:29.721Z\",\n            \"timestamp\": \"1601870429721\"\n        },\n        {\n            \"uuid\": \"8c957579-7c61-473e-8a8f-399fd871ca51\",\n            \"commodity\": \"Baronang\",\n            \"province\": \"JAWA TENGAH\",\n            \"city\": \"CILACAP\",\n            \"size\": \"80\",\n            \"idr\": \"2400000\",\n            \"usd\": \"168.47\",\n            \"parsed_at\": \"2020-10-05T04:00:29.721Z\",\n            \"timestamp\": \"1601870429722\"\n        },\n        {\n            \"uuid\": \"9900abcdef4.317305213526449\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"TASIKMALAYA\",\n            \"size\": \"12\",\n            \"idr\": \"12300\",\n            \"usd\": \"0.86\",\n            \"parsed_at\": \"2020-10-05T04:00:29.721Z\",\n            \"timestamp\": \"1601870429722\"\n        },\n        {\n            \"uuid\": \"59b328a8-3a2f-42f0-8753-8c9e301ecf6d\",\n            \"commodity\": \"Kerapu\",\n            \"province\": \"SUMATERA UTARA\",\n            \"city\": \"MEDAN\",\n            \"size\": \"30\",\n            \"idr\": \"100000\",\n            \"usd\": \"7.02\",\n            \"parsed_at\": \"2020-10-09T08:11:47.880Z\",\n            \"timestamp\": \"1602231107880\"\n        },\n        {\n            \"uuid\": \"a5ac5951-f4a8-48fd-a082-811dd5bd180a\",\n            \"commodity\": \"Teri\",\n            \"province\": \"JAWA TENGAH\",\n            \"city\": \"CILACAP\",\n            \"size\": \"40\",\n            \"idr\": \"40000\",\n            \"usd\": \"2.81\",\n            \"parsed_at\": \"2020-10-12T04:04:06+07:00\",\n            \"timestamp\": \"1605692828807\"\n        },\n        {\n            \"uuid\": \"9f638ec4-7a48-468a-8bdb-82964822a3fd\",\n            \"commodity\": \"Mujair\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"30\",\n            \"idr\": \"300000\",\n            \"usd\": \"21.06\",\n            \"parsed_at\": \"2020-10-12T04:04:06+07:00\",\n            \"timestamp\": \"1605692828807\"\n        },\n        {\n            \"uuid\": \"c605472e-a439-456f-8ab7-2aa55af60fd3\",\n            \"commodity\": \"Kerapu\",\n            \"province\": \"SUMATERA UTARA\",\n            \"city\": \"MEDAN\",\n            \"size\": \"60\",\n            \"idr\": \"1500000\",\n            \"usd\": \"105.29\",\n            \"parsed_at\": \"2020-10-12T04:04:06+07:00\",\n            \"timestamp\": \"1605692828807\"\n        },\n        {\n            \"uuid\": \"8d49d6c0-0d0b-11eb-b01d-2942a255b553\",\n            \"commodity\": \"Sapusapu\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BALEENDAH INDAH\",\n            \"size\": \"170\",\n            \"idr\": \"2000\",\n            \"usd\": \"0.14\",\n            \"parsed_at\": \"2020-10-13T04:21:23.117Z\",\n            \"timestamp\": \"1602562883117\"\n        },\n        {\n            \"uuid\": \"c6c76d3a-29d1-4cbd-9251-7de0b1363c4f\",\n            \"commodity\": \"Kerapu\",\n            \"province\": \"JAWA TIMUR\",\n            \"city\": \"JEMBER\",\n            \"size\": \"60\",\n            \"idr\": \"600000\",\n            \"usd\": \"42.12\",\n            \"parsed_at\": \"2020-10-13T04:21:23.117Z\",\n            \"timestamp\": \"1602562883117\"\n        },\n        {\n            \"uuid\": \"160d2c1d-4e54-4379-82f7-de1f44db46c9\",\n            \"commodity\": \"Tengiri\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"140\",\n            \"idr\": \"23000\",\n            \"usd\": \"1.61\",\n            \"parsed_at\": \"2020-10-13T04:21:23.117Z\",\n            \"timestamp\": \"1602562883117\"\n        },\n        {\n            \"uuid\": \"3324cb6e-f68c-4233-ae05-5d8a0dcca77e\",\n            \"commodity\": \"Etong\",\n            \"province\": \"SULAWESI BARAT\",\n            \"city\": \"MAMUJU UTARA\",\n            \"size\": \"40\",\n            \"idr\": \"15000\",\n            \"usd\": \"1.05\",\n            \"parsed_at\": \"2020-10-13T04:21:23.117Z\",\n            \"timestamp\": \"1602562883117\"\n        },\n        {\n            \"uuid\": \"3b35ed3b-03f1-48c3-af97-0afcf8fdbb8a\",\n            \"commodity\": \"Ekor Kuning\",\n            \"province\": \"KALIMANTAN TIMUR\",\n            \"city\": \"BORNEO\",\n            \"size\": \"50\",\n            \"idr\": \"800000\",\n            \"usd\": \"56.16\",\n            \"parsed_at\": \"2020-10-13T04:21:23.117Z\",\n            \"timestamp\": \"1602562883117\"\n        },\n        {\n            \"uuid\": \"77cfdca1-4998-461d-943e-14bbf02be8f6\",\n            \"commodity\": \"Cakalang\",\n            \"province\": \"SULAWESI BARAT\",\n            \"city\": \"MAMUJU UTARA\",\n            \"size\": \"40\",\n            \"idr\": \"500000\",\n            \"usd\": \"35.10\",\n            \"parsed_at\": \"2020-10-13T04:21:23.117Z\",\n            \"timestamp\": \"1602562883117\"\n        },\n        {\n            \"uuid\": \"f2a2cef2-2782-4fd4-9bfa-428e52c54f41\",\n            \"commodity\": \"Salem\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"30\",\n            \"idr\": \"200000\",\n            \"usd\": \"14.04\",\n            \"parsed_at\": \"2020-10-13T04:21:23.117Z\",\n            \"timestamp\": \"1602562883117\"\n        },\n        {\n            \"uuid\": \"8a91e0cc-51f2-4c7b-b7c6-947571a0fa3a\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"BALI\",\n            \"city\": \"BULELENG\",\n            \"size\": \"60\",\n            \"idr\": \"909789\",\n            \"usd\": \"63.86\",\n            \"parsed_at\": \"2020-11-01T06:04:03+07:00\",\n            \"timestamp\": \"1605691314132\"\n        },\n        {\n            \"uuid\": \"bf1f6484-72e3-466b-8148-e4e55af573aa\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"BALI\",\n            \"city\": \"BULELENG\",\n            \"size\": \"30\",\n            \"idr\": \"900000\",\n            \"usd\": \"63.18\",\n            \"parsed_at\": \"2020-11-01T06:04:03+07:00\",\n            \"timestamp\": \"1605692024465\"\n        },\n        {\n            \"uuid\": \"a6681f9c-4b3d-4ed6-88a3-e1e83994af6a\",\n            \"commodity\": \"Bawal\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"120\",\n            \"idr\": \"14000\",\n            \"usd\": \"0.98\",\n            \"parsed_at\": \"2020-11-02T03:01:01+07:00\",\n            \"timestamp\": \"1605670558836\"\n        },\n        {\n            \"uuid\": \"8968d6b2-d205-43b0-af33-b972937ffbf8\",\n            \"commodity\": \"Lele\",\n            \"province\": \"SULAWESI BARAT\",\n            \"city\": \"MAMUJU UTARA\",\n            \"size\": \"50\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2020-11-04T02:04:02+07:00\",\n            \"timestamp\": \"1605691227489\"\n        },\n        {\n            \"uuid\": \"30b022a2-4f72-4971-8609-5bd65adfa3f0\",\n            \"commodity\": \"Lele\",\n            \"province\": \"SULAWESI BARAT\",\n            \"city\": \"MAMUJU UTARA\",\n            \"size\": \"50\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2020-11-04T02:04:02+07:00\",\n            \"timestamp\": \"1605691230359\"\n        },\n        {\n            \"uuid\": \"2aef4b67-a393-446e-b473-842cb4d9d245\",\n            \"commodity\": \"Patin\",\n            \"province\": \"SUMATERA BARAT\",\n            \"city\": \"PADANG PARIAMAN\",\n            \"size\": \"40\",\n            \"idr\": \"12333\",\n            \"usd\": \"0.87\",\n            \"parsed_at\": \"2020-11-08T04:03:03+07:00\",\n            \"timestamp\": \"1605692341409\"\n        },\n        {\n            \"uuid\": \"9ffa914a-5076-450c-a88c-8f0addd3f24d\",\n            \"commodity\": \"Gabus\",\n            \"province\": \"BALI\",\n            \"city\": \"BULELENG\",\n            \"size\": \"180\",\n            \"idr\": \"2000\",\n            \"usd\": \"0.14\",\n            \"parsed_at\": \"2020-11-08T05:04:05+07:00\",\n            \"timestamp\": \"1605702221413\"\n        },\n        {\n            \"uuid\": \"f3dae8efc26846c3cbbcb899195e8cf68f94138addc5ab6789d22af03dea8bc5\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"JAWA TIMUR\",\n            \"city\": \"BANYUWANGI\",\n            \"size\": \"80\",\n            \"idr\": \"12000\",\n            \"usd\": \"0.84\",\n            \"parsed_at\": \"2020-11-08T05:04:05+07:00\",\n            \"timestamp\": \"1605702221413\"\n        },\n        {\n            \"uuid\": \"ea966a5b169f1fa5c9cd78ec4fdee701982836e5a99200ccc82548235618926e\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"JAWA TIMUR\",\n            \"city\": \"BANYUWANGI\",\n            \"size\": \"90\",\n            \"idr\": \"50000\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2020-11-08T05:04:05+07:00\",\n            \"timestamp\": \"1605702221413\"\n        },\n        {\n            \"uuid\": \"07121c63b36340ac52f2ba8c621e54f6095b33d5e45215ffba47a4b461d5a0fe\",\n            \"commodity\": \"Udang Windu\",\n            \"province\": \"BALI\",\n            \"city\": \"BULELENG\",\n            \"size\": \"30\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2020-11-08T05:04:05+07:00\",\n            \"timestamp\": \"1605702221413\"\n        },\n        {\n            \"uuid\": \"231ff25d-724d-4b5e-b2fb-78d706249c25\",\n            \"commodity\": \"Belut\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"50\",\n            \"idr\": \"90000\",\n            \"usd\": \"6.32\",\n            \"parsed_at\": \"2020-11-08T05:04:05+07:00\",\n            \"timestamp\": \"1605702221413\"\n        },\n        {\n            \"uuid\": \"83c84aaf-ff98-410d-8754-3f1de5ac5607\",\n            \"commodity\": \"Nila\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"CIREBON\",\n            \"size\": \"50\",\n            \"idr\": \"5000\",\n            \"usd\": \"0.35\",\n            \"parsed_at\": \"2020-11-08T05:04:05+07:00\",\n            \"timestamp\": \"1605702221413\"\n        },\n        {\n            \"uuid\": \"183cc364-46aa-41b2-97bb-6f86ee1f3554\",\n            \"commodity\": \"Udang Vannamei\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"TASIKMALAYA\",\n            \"size\": \"125\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2020-11-08T05:04:05+07:00\",\n            \"timestamp\": \"1605702221413\"\n        },\n        {\n            \"uuid\": \"da02fdbf-1b6f-4c47-8aea-eb3c8e525566\",\n            \"commodity\": \"Bandeng\",\n            \"province\": \"JAWA TENGAH\",\n            \"city\": \"CILACAP\",\n            \"size\": \"121\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2021-01-21T08:50:03.224Z\",\n            \"timestamp\": \"1611219003224\"\n        },\n        {\n            \"uuid\": \"2b2754b7-511f-4f4f-a3ea-97f582e44ae8\",\n            \"commodity\": \"Bandeng\",\n            \"province\": \"JAWA TENGAH\",\n            \"city\": \"CILACAP\",\n            \"size\": \"140\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2021-01-21T08:49:21.976Z\",\n            \"timestamp\": \"1611218961976\"\n        },\n        {\n            \"uuid\": \"e70d9b90-af37-4171-98d0-57183047b32c\",\n            \"commodity\": \"Bandeng\",\n            \"province\": \"JAWA TENGAH\",\n            \"city\": \"CILACAP\",\n            \"size\": \"102\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2021-01-14T14:42:00.165Z\",\n            \"timestamp\": \"1610635320165\"\n        },\n        {\n            \"uuid\": \"7f00354a-a6e1-40c1-9ad6-d9e673f079fe\",\n            \"commodity\": \"Bandeng\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"20\",\n            \"idr\": \"100000\",\n            \"usd\": \"7.02\",\n            \"parsed_at\": \"2021-01-15T16:35:45.929Z\",\n            \"timestamp\": \"1610728545929\"\n        },\n        {\n            \"uuid\": \"832aa6d5-aae1-4e6a-b523-7d55cd9500c9\",\n            \"commodity\": \"Bandeng\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"20\",\n            \"idr\": \"100000\",\n            \"usd\": \"7.02\",\n            \"parsed_at\": \"2021-01-15T16:35:47.218Z\",\n            \"timestamp\": \"1610728547218\"\n        },\n        {\n            \"uuid\": \"cece169b-2fa9-449d-857a-7a386d286212\",\n            \"commodity\": \"Bandeng\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"20\",\n            \"idr\": \"100000\",\n            \"usd\": \"7.02\",\n            \"parsed_at\": \"2021-01-15T16:35:47.665Z\",\n            \"timestamp\": \"1610728547665\"\n        },\n        {\n            \"uuid\": \"96161013-baf3-440a-9bcd-30db2a36e504\",\n            \"commodity\": \"Bandeng\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"20\",\n            \"idr\": \"100000\",\n            \"usd\": \"7.02\",\n            \"parsed_at\": \"2021-01-15T16:35:47.990Z\",\n            \"timestamp\": \"1610728547990\"\n        },\n        {\n            \"uuid\": \"07754845-958b-4826-bdb2-135b7c0f3da0\",\n            \"commodity\": \"Bandeng\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"20\",\n            \"idr\": \"100000\",\n            \"usd\": \"7.02\",\n            \"parsed_at\": \"2021-01-15T16:35:49.254Z\",\n            \"timestamp\": \"1610728549254\"\n        },\n        {\n            \"uuid\": \"dd66788d-487d-4dc6-b7d4-afbd53bb3941\",\n            \"commodity\": \"Bandeng\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"20\",\n            \"idr\": \"100000\",\n            \"usd\": \"7.02\",\n            \"parsed_at\": \"2021-01-15T16:35:50.433Z\",\n            \"timestamp\": \"1610728550433\"\n        },\n        {\n            \"uuid\": \"b7571783-3256-4e70-9b56-7873d0c48e91\",\n            \"commodity\": \"Bandeng\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"20\",\n            \"idr\": \"100000\",\n            \"usd\": \"7.02\",\n            \"parsed_at\": \"2021-01-15T16:35:52.294Z\",\n            \"timestamp\": \"1610728552294\"\n        },\n        {\n            \"uuid\": \"20d2f098-87b4-4f8f-9c20-fc9ce1a8eae0\",\n            \"commodity\": \"Udang Bandung Asli\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"20\",\n            \"idr\": \"200000\",\n            \"usd\": \"14.04\",\n            \"parsed_at\": \"2021-01-15T17:16:27.675Z\",\n            \"timestamp\": \"1610730987675\"\n        },\n        {\n            \"uuid\": \"ea4d7086-e43a-4e08-872b-92e8d4184975\",\n            \"commodity\": \"Udang Garut\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"GARUT\",\n            \"size\": \"20\",\n            \"idr\": \"1000\",\n            \"usd\": \"0.07\",\n            \"parsed_at\": \"2021-01-15T17:17:22.292Z\",\n            \"timestamp\": \"1610731042292\"\n        },\n        {\n            \"uuid\": \"ef8a69fc-9307-42d0-b57b-32dc8dbc4296\",\n            \"commodity\": \"Bandeng Keren\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"212\",\n            \"idr\": \"100000\",\n            \"usd\": \"7.02\",\n            \"parsed_at\": \"2021-01-16T17:02:23.681Z\",\n            \"timestamp\": \"1610816543681\"\n        },\n        {\n            \"uuid\": \"385efbc3-43d6-453d-a569-1cbe207a92bc\",\n            \"commodity\": \"\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"21\",\n            \"idr\": \"21021\",\n            \"usd\": \"1.48\",\n            \"parsed_at\": \"2021-01-16T07:47:26.120Z\",\n            \"timestamp\": \"1610783246120\"\n        },\n        {\n            \"uuid\": \"d721cfa8-dfd9-4763-aa11-55868c943afa\",\n            \"commodity\": \"\",\n            \"province\": \"DKI JAKARTA\",\n            \"city\": \"JAKARTA SELATAN\",\n            \"size\": \"10\",\n            \"idr\": \"200000\",\n            \"usd\": \"14.04\",\n            \"parsed_at\": \"2021-01-16T09:53:45.799Z\",\n            \"timestamp\": \"1610790825799\"\n        },\n        {\n            \"uuid\": \"103c0deb-1707-43c8-ae30-27891d543cf9\",\n            \"commodity\": \"\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"10\",\n            \"idr\": \"200000\",\n            \"usd\": \"14.04\",\n            \"parsed_at\": \"2021-01-16T09:54:26.047Z\",\n            \"timestamp\": \"1610790866047\"\n        },\n        {\n            \"uuid\": \"ab122aba-3de3-4565-a25c-894244df2d22\",\n            \"commodity\": \"Bandeng Gundala\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"10\",\n            \"idr\": \"200000\",\n            \"usd\": \"14.04\",\n            \"parsed_at\": \"2021-01-16T17:02:46.815Z\",\n            \"timestamp\": \"1610816566815\"\n        },\n        {\n            \"uuid\": \"f950c3ac-19cf-4c71-b17f-e0287f72df39\",\n            \"commodity\": \"Komoditas Sapi\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"20\",\n            \"idr\": \"2010210\",\n            \"usd\": \"141.11\",\n            \"parsed_at\": \"2021-01-16T19:03:30.372Z\",\n            \"timestamp\": \"1610823810372\"\n        },\n        {\n            \"uuid\": \"d7fe76a4-8f32-4160-8682-523c923744e2\",\n            \"commodity\": \"Ikan Gabus\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"30\",\n            \"idr\": \"210210\",\n            \"usd\": \"14.76\",\n            \"parsed_at\": \"2021-01-21T09:12:58.243Z\",\n            \"timestamp\": \"1611220378243\"\n        },\n        {\n            \"uuid\": \"16dd6074-639c-4fed-8f0e-caa02dcd2155\",\n            \"commodity\": \"Ikan Salmin\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"CIMAHO\",\n            \"size\": \"1\",\n            \"idr\": \"210210\",\n            \"usd\": \"14.76\",\n            \"parsed_at\": \"2021-05-23T10:48:46.858Z\",\n            \"timestamp\": \"1621766926858\"\n        },\n        {\n            \"uuid\": \"d1d8684e-700d-434d-bb77-d896cd4f5785\",\n            \"commodity\": \"Ikan Keren\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"130\",\n            \"idr\": \"210210\",\n            \"usd\": \"14.76\",\n            \"parsed_at\": \"2021-01-17T02:41:47.779Z\",\n            \"timestamp\": \"1610851307779\"\n        },\n        {\n            \"uuid\": \"241e7f13-6e53-4977-96e9-0fcb3c475f33\",\n            \"commodity\": \"Ikan\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"40\",\n            \"idr\": \"210210\",\n            \"usd\": \"14.76\",\n            \"parsed_at\": \"2021-01-21T09:13:40.993Z\",\n            \"timestamp\": \"1611220420993\"\n        },\n        {\n            \"uuid\": \"e6152103-7d0e-44f0-ba1b-1ca1a0f758d5\",\n            \"commodity\": \"Cupang\",\n            \"province\": \"TOGO\",\n            \"city\": \"BURKINA FASO\",\n            \"size\": \"69\",\n            \"idr\": \"212212\",\n            \"usd\": \"14.90\",\n            \"parsed_at\": \"2021-01-18T02:45:03.614Z\",\n            \"timestamp\": \"1610937903614\"\n        },\n        {\n            \"uuid\": \"39517940-8d15-440b-b7d4-098ffcf5a34b\",\n            \"commodity\": \"Lele\",\n            \"province\": \"ACEH\",\n            \"city\": \"ACEH KOTA\",\n            \"size\": \"30\",\n            \"idr\": \"500\",\n            \"usd\": \"0.04\",\n            \"parsed_at\": \"2021-02-22T05:51:29+07:00\",\n            \"timestamp\": \"1613947889\"\n        },\n        {\n            \"uuid\": \"4aa35dfc-b882-47e9-87a2-f22467a86697\",\n            \"commodity\": \"Nila\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"CIREBON\",\n            \"size\": \"80\",\n            \"idr\": \"777000\",\n            \"usd\": \"54.54\",\n            \"parsed_at\": \"2021-02-22T09:44:03+07:00\",\n            \"timestamp\": \"1613961843\"\n        },\n        {\n            \"uuid\": \"f25b4d59-2036-4c1f-8437-cdbd382510c3\",\n            \"commodity\": \"Gabus\",\n            \"province\": \"BALI\",\n            \"city\": \"BULELENG\",\n            \"size\": \"40\",\n            \"idr\": \"25000\",\n            \"usd\": \"1.75\",\n            \"parsed_at\": \"2021-02-22T21:28:49+07:00\",\n            \"timestamp\": \"1614004129\"\n        },\n        {\n            \"uuid\": \"e09452e7-53b7-4cec-a3ec-90c18d336c70\",\n            \"commodity\": \"Patin\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"100\",\n            \"idr\": \"16000\",\n            \"usd\": \"1.12\",\n            \"parsed_at\": \"2021-02-23T07:04:51.530Z\",\n            \"timestamp\": \"1614063891530\"\n        },\n        {\n            \"uuid\": \"b93165ff-cd8e-46c5-9f3c-3db367b3e0f3\",\n            \"commodity\": \"Gurame\",\n            \"province\": \"ACEH\",\n            \"city\": \"ACEH KOTA\",\n            \"size\": \"40\",\n            \"idr\": \"3000\",\n            \"usd\": \"0.21\",\n            \"parsed_at\": \"2021-03-02T14:17:14+07:00\",\n            \"timestamp\": \"1614669434\"\n        },\n        {\n            \"uuid\": \"734b463f-5b00-48c2-a795-40d35c122d00\",\n            \"commodity\": \"Gabus\",\n            \"province\": \"BALI\",\n            \"city\": \"BULELENG\",\n            \"size\": \"50\",\n            \"idr\": \"45000\",\n            \"usd\": \"3.16\",\n            \"parsed_at\": \"2021-03-08T04:34:46.959Z\",\n            \"timestamp\": \"1615178086959\"\n        },\n        {\n            \"uuid\": \"ddd0dba7-e6bf-4b61-b650-02a66fca065c\",\n            \"commodity\": \"Buntal\",\n            \"province\": \"JAWA TENGAH\",\n            \"city\": \"PURWOREJO\",\n            \"size\": \"50\",\n            \"idr\": \"34000\",\n            \"usd\": \"2.39\",\n            \"parsed_at\": \"2021-03-08T08:52:59.915Z\",\n            \"timestamp\": \"1615193579915\"\n        },\n        {\n            \"uuid\": \"bcb5e1db-a64f-41a9-bd00-54d7b1515190\",\n            \"commodity\": \"Buntal\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"160\",\n            \"idr\": \"500000\",\n            \"usd\": \"35.10\",\n            \"parsed_at\": \"2021-03-08T09:30:28.051Z\",\n            \"timestamp\": \"1615195828051\"\n        },\n        {\n            \"uuid\": \"5c42d5fe-8af1-4035-ad9e-24292d39abbd\",\n            \"commodity\": \"Ikan Mas\",\n            \"province\": \"ACEH\",\n            \"city\": \"ACEH KOTA\",\n            \"size\": \"50\",\n            \"idr\": \"10000\",\n            \"usd\": \"0.70\",\n            \"parsed_at\": \"2021-03-16T03:30:18.265Z\",\n            \"timestamp\": \"1615865418265\"\n        },\n        {\n            \"uuid\": \"3b530700-b1b6-42ec-b5ce-754a69cac163\",\n            \"commodity\": \"Penyu\",\n            \"province\": \"DKI JAKARTA\",\n            \"city\": \"JAKARTA TIMUR\",\n            \"size\": \"15\",\n            \"idr\": \"100000\",\n            \"usd\": \"7.02\",\n            \"parsed_at\": \"2021-04-09T13:49:03.874Z\",\n            \"timestamp\": \"1617976143\"\n        },\n        {\n            \"uuid\": \"49e9dbc9-d732-4700-b3ba-60d3662f30c3\",\n            \"commodity\": \"Mujair\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"MEDAN\",\n            \"size\": \"140\",\n            \"idr\": \"49982\",\n            \"usd\": \"3.51\",\n            \"parsed_at\": \"2021-03-17T07:06:42.906Z\",\n            \"timestamp\": \"1615964802906\"\n        },\n        {\n            \"uuid\": \"fac14573-7d58-41af-8d76-94b27e3f8dff\",\n            \"commodity\": \"Kakap Merah\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"40\",\n            \"idr\": \"45000\",\n            \"usd\": \"3.16\",\n            \"parsed_at\": \"2021-03-17T07:09:45.260Z\",\n            \"timestamp\": \"1615964985260\"\n        },\n        {\n            \"uuid\": \"422da328-7671-46ed-9449-c7f59ce00cf5\",\n            \"commodity\": \"Ikan Badut\",\n            \"province\": \"KALIMANTAN TIMUR\",\n            \"city\": \"BORNEO\",\n            \"size\": \"30\",\n            \"idr\": \"200000\",\n            \"usd\": \"14.04\",\n            \"parsed_at\": \"2021-03-20T12:35:56.582Z\",\n            \"timestamp\": \"1616218556582\"\n        },\n        {\n            \"uuid\": \"816d2933-8c63-4645-ba58-41beaa3e9651\",\n            \"commodity\": \"Asin\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"DEPOK\",\n            \"size\": \"30\",\n            \"idr\": \"5000\",\n            \"usd\": \"0.35\",\n            \"parsed_at\": \"2021-04-04T17:39:25.457Z\",\n            \"timestamp\": \"1617532765\"\n        },\n        {\n            \"uuid\": \"a71218c1-953f-4110-98ab-6fef497cad12\",\n            \"commodity\": \"Asin\",\n            \"province\": \"\",\n            \"city\": \"\",\n            \"size\": \"30\",\n            \"idr\": \"\",\n            \"usd\": \"0.00\",\n            \"parsed_at\": \"\",\n            \"timestamp\": \"\"\n        },\n        {\n            \"uuid\": \"a2b991ea-5bc2-46e8-8529-7fbe77cdefb7\",\n            \"commodity\": \"Gabus\",\n            \"province\": \"JAWA SELATAN\",\n            \"city\": \"PANTAI SELATAN\",\n            \"size\": \"40\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2021-04-06T04:29:07.525Z\",\n            \"timestamp\": \"1617683347\"\n        },\n        {\n            \"uuid\": \"f51cb516-10ae-4771-a6cf-63cc4a99a308\",\n            \"commodity\": \"Cupang\",\n            \"province\": \"ACEH\",\n            \"city\": \"ACEH KOTA\",\n            \"size\": \"30\",\n            \"idr\": \"24444\",\n            \"usd\": \"1.72\",\n            \"parsed_at\": \"2021-04-08T22:48:09.866Z\",\n            \"timestamp\": \"1617896889\"\n        },\n        {\n            \"uuid\": \"6c2cb182-3d08-4124-9fe1-160220bf9418\",\n            \"commodity\": \"Gabus\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"40\",\n            \"idr\": \"21000\",\n            \"usd\": \"1.47\",\n            \"parsed_at\": \"2021-04-09T13:48:56.551Z\",\n            \"timestamp\": \"1617976136\"\n        },\n        {\n            \"uuid\": \"aa5aa9ce-9290-48d3-b932-ef9b7b06da2e\",\n            \"commodity\": \"Duyung\",\n            \"province\": \"BALI\",\n            \"city\": \"BULELENG\",\n            \"size\": \"80\",\n            \"idr\": \"999999\",\n            \"usd\": \"70.20\",\n            \"parsed_at\": \"2021-04-09T13:10:53+07:00\",\n            \"timestamp\": \"1617948653\"\n        },\n        {\n            \"uuid\": \"9900abcdef5.044675852465896\",\n            \"commodity\": \"Test 3 Oi\",\n            \"province\": \"BANTEN\",\n            \"city\": \"PANDEGLANG\",\n            \"size\": \"60\",\n            \"idr\": \"100000\",\n            \"usd\": \"7.02\",\n            \"parsed_at\": \"\",\n            \"timestamp\": \"\"\n        },\n        {\n            \"uuid\": \"9900abcdef20.514829961007713\",\n            \"commodity\": \"Cupang Super\",\n            \"province\": \"Jawa Timur\",\n            \"city\": \"\",\n            \"size\": \"10\",\n            \"idr\": \"6666666\",\n            \"usd\": \"467.98\",\n            \"parsed_at\": \"\",\n            \"timestamp\": \"\"\n        },\n        {\n            \"uuid\": \"9900abcdef19.65457436846915\",\n            \"commodity\": \"Cupang Super Duper\",\n            \"province\": \"Jawa Timur\",\n            \"city\": \"Surabaya\",\n            \"size\": \"10\",\n            \"idr\": \"2000000\",\n            \"usd\": \"140.39\",\n            \"parsed_at\": \"\",\n            \"timestamp\": \"\"\n        },\n        {\n            \"uuid\": \"ff6aed51-2943-4618-abf2-c744e97957a8\",\n            \"commodity\": \"Cupang Super Sekali\",\n            \"province\": \"Jawa Timur\",\n            \"city\": \"Surabaya\",\n            \"size\": \"666\",\n            \"idr\": \"300000\",\n            \"usd\": \"21.06\",\n            \"parsed_at\": \"2021-04-11T13:37:05.000Z\",\n            \"timestamp\": \"1618148225\"\n        },\n        {\n            \"uuid\": \"82615e4c-bf62-4e07-881e-c7bd9b1ec213\",\n            \"commodity\": \"Ikan Sepat\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"DEPOK\",\n            \"size\": \"33\",\n            \"idr\": \"12000\",\n            \"usd\": \"0.84\",\n            \"parsed_at\": \"2021-04-12T13:56:00.551Z\",\n            \"timestamp\": \"1618235760\"\n        },\n        {\n            \"uuid\": \"c9726b82-b267-4f82-a9d2-a96b791002c0\",\n            \"commodity\": \"asdf\",\n            \"province\": \"asdf\",\n            \"city\": \"asdf\",\n            \"size\": \"asdf\",\n            \"idr\": \"asfd\",\n            \"usd\": \"0.00\",\n            \"parsed_at\": \"2021-04-14T10:31:08.000Z\",\n            \"timestamp\": \"1618396268\"\n        },\n        {\n            \"uuid\": \"3560c4f9-c4cc-4f52-8858-a0e1ffc52bee\",\n            \"commodity\": \"asdf\",\n            \"province\": \"asdf\",\n            \"city\": \"asdf\",\n            \"size\": \"asdf\",\n            \"idr\": \"asfd\",\n            \"usd\": \"0.00\",\n            \"parsed_at\": \"2021-04-14T10:31:10.000Z\",\n            \"timestamp\": \"1618396270\"\n        },\n        {\n            \"uuid\": \"fde4fa04-2918-4f12-8125-a2427d7105ef\",\n            \"commodity\": \"Komo 1\",\n            \"province\": \"ACEH\",\n            \"city\": \"ACEH KOTA\",\n            \"size\": \"30\",\n            \"idr\": \"123\",\n            \"usd\": \"0.01\",\n            \"parsed_at\": \"2021-04-15T15:02:23+07:00\",\n            \"timestamp\": \"1618473743305\"\n        },\n        {\n            \"uuid\": \"3d321ae6-7499-493c-bdbf-c6073e83bdf3\",\n            \"commodity\": \"Komo 2\",\n            \"province\": \"ACEH\",\n            \"city\": \"ACEH KOTA\",\n            \"size\": \"30\",\n            \"idr\": \"123\",\n            \"usd\": \"0.01\",\n            \"parsed_at\": \"2021-04-15T15:04:58+07:00\",\n            \"timestamp\": \"1618473898464\"\n        },\n        {\n            \"uuid\": \"8a264560-df45-49e0-8dde-6ded0fa1ab68\",\n            \"commodity\": \"Komo 3\",\n            \"province\": \"ACEH\",\n            \"city\": \"ACEH KOTA\",\n            \"size\": \"30\",\n            \"idr\": \"123\",\n            \"usd\": \"0.01\",\n            \"parsed_at\": \"2021-04-15T15:06:16+07:00\",\n            \"timestamp\": \"1618473976043\"\n        },\n        {\n            \"uuid\": \"41c48f0f-f0c0-4309-a499-de1b75498004\",\n            \"commodity\": \"Komo 4\",\n            \"province\": \"ACEH\",\n            \"city\": \"ACEH KOTA\",\n            \"size\": \"30\",\n            \"idr\": \"123\",\n            \"usd\": \"0.01\",\n            \"parsed_at\": \"2021-04-15T15:07:40+07:00\",\n            \"timestamp\": \"1618474060677\"\n        },\n        {\n            \"uuid\": \"61a2997b-0d5f-4ed1-bdd5-e5c2da2c5fe9\",\n            \"commodity\": \"Komo 5\",\n            \"province\": \"ACEH\",\n            \"city\": \"ACEH KOTA\",\n            \"size\": \"30\",\n            \"idr\": \"1\",\n            \"usd\": \"0.00\",\n            \"parsed_at\": \"2021-04-15T15:08:43+07:00\",\n            \"timestamp\": \"1618474123145\"\n        },\n        {\n            \"uuid\": \"9b4b65a1-7a3f-41d5-b4a2-b18ef2c51334\",\n            \"commodity\": \"Komo 6\",\n            \"province\": \"ACEH\",\n            \"city\": \"ACEH KOTA\",\n            \"size\": \"30\",\n            \"idr\": \"234\",\n            \"usd\": \"0.02\",\n            \"parsed_at\": \"2021-04-15T15:15:49+07:00\",\n            \"timestamp\": \"1618474549026\"\n        },\n        {\n            \"uuid\": \"ad468ea4-6e12-4d7a-ae5b-c04de70c8ba8\",\n            \"commodity\": \"Test1\",\n            \"province\": \"ACEH\",\n            \"city\": \"ACEH KOTA\",\n            \"size\": \"30\",\n            \"idr\": \"34\",\n            \"usd\": \"0.00\",\n            \"parsed_at\": \"2021-04-16T11:36:41+07:00\",\n            \"timestamp\": \"1618547801\"\n        },\n        {\n            \"uuid\": \"e87c72a4-168c-416e-b2a0-7f3b9f5f8986\",\n            \"commodity\": \"Gabus\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"CIREBON\",\n            \"size\": \"50\",\n            \"idr\": \"13500\",\n            \"usd\": \"0.95\",\n            \"parsed_at\": \"2021-04-16T13:25:57+07:00\",\n            \"timestamp\": \"1618554357449\"\n        },\n        {\n            \"uuid\": \"32719dd1-363c-4fcb-85a8-799ad002c345\",\n            \"commodity\": \"Muhammad\",\n            \"province\": \"DKI JAKARTA\",\n            \"city\": \"KOTA TUA\",\n            \"size\": \"40\",\n            \"idr\": \"200000\",\n            \"usd\": \"14.04\",\n            \"parsed_at\": \"2021-04-16T22:21:32+07:00\",\n            \"timestamp\": \"1618586492888\"\n        },\n        {\n            \"uuid\": \"85523eda-380a-4e69-9f55-135ff7964520\",\n            \"commodity\": \"Ikan\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"20\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2021-04-16T15:35:28.337Z\",\n            \"timestamp\": \"1618587328337\"\n        },\n        {\n            \"uuid\": \"5bb584a5-d11a-4c37-8a49-68a93c2cba79\",\n            \"commodity\": \"Bandeng\",\n            \"province\": \"JAWA TIMUR\",\n            \"city\": \"SURABAYA\",\n            \"size\": \"30\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"2021-04-19T14:35:11+07:00\",\n            \"timestamp\": \"1618817711\"\n        },\n        {\n            \"uuid\": \"f9c36907-bd72-401a-8d03-899a38678291\",\n            \"commodity\": \"ikan indosiar\",\n            \"province\": \"ACEH\",\n            \"city\": \"ACEH KOTA\",\n            \"size\": \"40\",\n            \"idr\": \"122222\",\n            \"usd\": \"8.58\",\n            \"parsed_at\": \"2021-04-21T16:17:51+07:00\",\n            \"timestamp\": \"1618996671\"\n        },\n        {\n            \"uuid\": \"7fe294a3-45af-405e-a555-ac15cc775a66\",\n            \"commodity\": \"Ican indosiar\",\n            \"province\": \"BALI\",\n            \"city\": \"BULELENG\",\n            \"size\": \"40\",\n            \"idr\": \"122222\",\n            \"usd\": \"8.58\",\n            \"parsed_at\": \"2021-04-20T01:00:32+07:00\",\n            \"timestamp\": \"1618855232\"\n        },\n        {\n            \"uuid\": \"a38ffa5b-47e1-43ac-8451-dd57b4b4c4b6\",\n            \"commodity\": \"ikan indosiar bakar\",\n            \"province\": \"ACEH\",\n            \"city\": \"ACEH KOTA\",\n            \"size\": \"30\",\n            \"idr\": \"122222222222\",\n            \"usd\": \"8579556.87\",\n            \"parsed_at\": \"2021-04-20T16:57:58+07:00\",\n            \"timestamp\": \"1618912678\"\n        },\n        {\n            \"uuid\": \"35cffb4b-759e-47d6-b5f3-314b6ad63acb\",\n            \"commodity\": \"Ikan cupang\",\n            \"province\": \"JAWA BARAT\",\n            \"city\": \"BANDUNG\",\n            \"size\": \"70\",\n            \"idr\": \"50\",\n            \"usd\": \"0.00\",\n            \"parsed_at\": \"2021-04-20T16:40:58+07:00\",\n            \"timestamp\": \"1618911658\"\n        },\n        {\n            \"uuid\": \"16a16ca5-346c-435d-b1b9-2ddc87a96389\",\n            \"commodity\": \"Gabus\",\n            \"province\": \"JAWA TENGAH\",\n            \"city\": \"PURWOREJO\",\n            \"size\": \"50\",\n            \"idr\": \"12342\",\n            \"usd\": \"0.87\",\n            \"parsed_at\": \"2021-04-20T17:04:13+07:00\",\n            \"timestamp\": \"1618913053\"\n        },\n        {\n            \"uuid\": \"f0cf9b10-b5ab-4494-a2da-a777a112ffd8\",\n            \"commodity\": \"Bandeng\",\n            \"province\": \"BALI\",\n            \"city\": \"BULELENG\",\n            \"size\": \"50\",\n            \"idr\": \"60000\",\n            \"usd\": \"4.21\",\n            \"parsed_at\": \"2021-04-20T17:05:55+07:00\",\n            \"timestamp\": \"1618913155951\"\n        },\n        {\n            \"uuid\": \"248beff6-1ee1-42cb-b47c-fb1375c85dd9\",\n            \"commodity\": \"Ikan sapu sapu\",\n            \"province\": \"Jawa Timur\",\n            \"city\": \"Surabaya\",\n            \"size\": \"20\",\n            \"idr\": \"30000\",\n            \"usd\": \"2.11\",\n            \"parsed_at\": \"2021-04-21T03:00:29.000Z\",\n            \"timestamp\": \"1618974029\"\n        },\n        {\n            \"uuid\": \"2e2a9a85-fd72-4232-96ca-9c4911aa0228\",\n            \"commodity\": \"Ikan sapu sapu super \",\n            \"province\": \"Jawa Timur\",\n            \"city\": \"Surabaya\",\n            \"size\": \"100\",\n            \"idr\": \"2000000\",\n            \"usd\": \"140.39\",\n            \"parsed_at\": \"2021-04-21T03:01:08.000Z\",\n            \"timestamp\": \"1618974068\"\n        },\n        {\n            \"uuid\": \"fc4b222e-901c-4a1c-aa8e-d356222e083a\",\n            \"commodity\": \"Cupang Super 22\",\n            \"province\": \"Jawa Timur\",\n            \"city\": \"Surabaya\",\n            \"size\": \"3000\",\n            \"idr\": \"200000\",\n            \"usd\": \"14.04\",\n            \"parsed_at\": \"2021-04-21T06:09:30.000Z\",\n            \"timestamp\": \"1618985370\"\n        },\n        {\n            \"uuid\": \"26324a80-17a5-4853-bfa4-4841fdf99390\",\n            \"commodity\": \"Komo 6\",\n            \"province\": \"BALI\",\n            \"city\": \"BULELENG\",\n            \"size\": \"40\",\n            \"idr\": \"122\",\n            \"usd\": \"0.01\",\n            \"parsed_at\": \"2021-04-23T20:33:06+07:00\",\n            \"timestamp\": \"1619184786759\"\n        },\n        {\n            \"uuid\": \"4762343d-d821-464f-9b60-3acfb8d21f78\",\n            \"commodity\": \"Ikan terbang\",\n            \"province\": \"BULELENG\",\n            \"city\": \"BALI\",\n            \"size\": \"50\",\n            \"idr\": \"10000000\",\n            \"usd\": \"701.96\",\n            \"parsed_at\": \"\",\n            \"timestamp\": \"1619757707897\"\n        },\n        {\n            \"uuid\": \"f2a5c117-9656-4f6b-a6da-681f8d2bd481\",\n            \"commodity\": \"fasfasf\",\n            \"province\": \"BULELENG\",\n            \"city\": \"BALI\",\n            \"size\": \"50\",\n            \"idr\": \"12333344\",\n            \"usd\": \"865.76\",\n            \"parsed_at\": \"\",\n            \"timestamp\": \"1619762706997\"\n        },\n        {\n            \"uuid\": \"a2ac29c1-0640-46f8-917b-a73ea8b55a4e\",\n            \"commodity\": \"Ikan cupang besar\",\n            \"province\": \"BULELENG\",\n            \"city\": \"BALI\",\n            \"size\": \"60\",\n            \"idr\": \"23456\",\n            \"usd\": \"1.65\",\n            \"parsed_at\": \"\",\n            \"timestamp\": \"1619762979130\"\n        },\n        {\n            \"uuid\": \"a04fc7e3-eda9-4fe9-b85e-3ca18b9ed183\",\n            \"commodity\": \"Ikan sapu2\",\n            \"province\": \"BANDUNG\",\n            \"city\": \"JAWA BARAT\",\n            \"size\": \"40\",\n            \"idr\": \"10000\",\n            \"usd\": \"0.70\",\n            \"parsed_at\": \"\",\n            \"timestamp\": \"1619764824110\"\n        },\n        {\n            \"uuid\": \"b0046cb1-bae3-459b-8717-957d23e2aa3b\",\n            \"commodity\": \"ikan kucing\",\n            \"province\": \"BULELENG\",\n            \"city\": \"BALI\",\n            \"size\": \"40\",\n            \"idr\": \"21344\",\n            \"usd\": \"1.50\",\n            \"parsed_at\": \"\",\n            \"timestamp\": \"1619775517321\"\n        },\n        {\n            \"uuid\": \"e53fda70-c81c-494c-9511-b508226ca65e\",\n            \"commodity\": \"Gurame\",\n            \"province\": \"PADANG PARIAMAN\",\n            \"city\": \"SUMATERA BARAT\",\n            \"size\": \"80\",\n            \"idr\": \"20000\",\n            \"usd\": \"1.40\",\n            \"parsed_at\": \"\",\n            \"timestamp\": \"1619852772963\"\n        },\n        {\n            \"uuid\": \"1411c493-3365-4b36-9616-f0fe131fa6d9\",\n            \"commodity\": \"gabus\",\n            \"province\": \"KOTA TUA\",\n            \"city\": \"DKI JAKARTA\",\n            \"size\": \"40\",\n            \"idr\": \"25160\",\n            \"usd\": \"1.77\",\n            \"parsed_at\": \"\",\n            \"timestamp\": \"1620009679404\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "report commodities",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_fetch}}/v1/commodities/report",
+							"host": [
+								"{{url_fetch}}"
+							],
+							"path": [
+								"v1",
+								"commodities",
+								"report"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success_response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_fetch}}/v1/commodities/report",
+									"host": [
+										"{{url_fetch}}"
+									],
+									"path": [
+										"v1",
+										"commodities",
+										"report"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jun 2021 16:42:28 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1861"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"00\",\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"province\": \"\",\n            \"min\": 0,\n            \"max\": 30,\n            \"median\": 89,\n            \"average\": 0.16853932584269662\n        },\n        {\n            \"province\": \"ACEH\",\n            \"min\": 30,\n            \"max\": 50,\n            \"median\": 7,\n            \"average\": 33.57142857142857\n        },\n        {\n            \"province\": \"BALI\",\n            \"min\": 30,\n            \"max\": 222,\n            \"median\": 8,\n            \"average\": 77\n        },\n        {\n            \"province\": \"BANDUNG\",\n            \"min\": 40,\n            \"max\": 40,\n            \"median\": 0,\n            \"average\": 40\n        },\n        {\n            \"province\": \"BANTEN\",\n            \"min\": 10,\n            \"max\": 160,\n            \"median\": 10,\n            \"average\": 51.5\n        },\n        {\n            \"province\": \"BULELENG\",\n            \"min\": 40,\n            \"max\": 60,\n            \"median\": 2,\n            \"average\": 50\n        },\n        {\n            \"province\": \"DKI JAKARTA\",\n            \"min\": 10,\n            \"max\": 198,\n            \"median\": 2,\n            \"average\": 58.6\n        },\n        {\n            \"province\": \"JAWA BARAT\",\n            \"min\": 1,\n            \"max\": 212,\n            \"median\": 19,\n            \"average\": 51.31578947368421\n        },\n        {\n            \"province\": \"JAWA SELATAN\",\n            \"min\": 40,\n            \"max\": 40,\n            \"median\": 0,\n            \"average\": 40\n        },\n        {\n            \"province\": \"JAWA TENGAH\",\n            \"min\": 40,\n            \"max\": 180,\n            \"median\": 5,\n            \"average\": 106.3\n        },\n        {\n            \"province\": \"JAWA TIMUR\",\n            \"min\": 30,\n            \"max\": 90,\n            \"median\": 2,\n            \"average\": 62\n        },\n        {\n            \"province\": \"Jawa Barat\",\n            \"min\": 4,\n            \"max\": 20,\n            \"median\": 1,\n            \"average\": 12\n        },\n        {\n            \"province\": \"Jawa Timur\",\n            \"min\": 10,\n            \"max\": 3000,\n            \"median\": 3,\n            \"average\": 634.3333333333334\n        },\n        {\n            \"province\": \"KALIMANTAN TIMUR\",\n            \"min\": 30,\n            \"max\": 50,\n            \"median\": 1,\n            \"average\": 40\n        },\n        {\n            \"province\": \"KOTA TUA\",\n            \"min\": 40,\n            \"max\": 40,\n            \"median\": 0,\n            \"average\": 40\n        },\n        {\n            \"province\": \"LAMPUNG\",\n            \"min\": 120,\n            \"max\": 190,\n            \"median\": 1,\n            \"average\": 155\n        },\n        {\n            \"province\": \"PADANG PARIAMAN\",\n            \"min\": 80,\n            \"max\": 80,\n            \"median\": 0,\n            \"average\": 80\n        },\n        {\n            \"province\": \"PANDEGLANG\",\n            \"min\": 60,\n            \"max\": 60,\n            \"median\": 0,\n            \"average\": 60\n        },\n        {\n            \"province\": \"SULAWESI BARAT\",\n            \"min\": 40,\n            \"max\": 140,\n            \"median\": 2,\n            \"average\": 64\n        },\n        {\n            \"province\": \"SUMATERA BARAT\",\n            \"min\": 10,\n            \"max\": 140,\n            \"median\": 7,\n            \"average\": 34\n        },\n        {\n            \"province\": \"SUMATERA UTARA\",\n            \"min\": 30,\n            \"max\": 60,\n            \"median\": 1,\n            \"average\": 45\n        },\n        {\n            \"province\": \"TOGO\",\n            \"min\": 69,\n            \"max\": 69,\n            \"median\": 0,\n            \"average\": 69\n        },\n        {\n            \"province\": \"aaa\",\n            \"min\": 10,\n            \"max\": 10,\n            \"median\": 0,\n            \"average\": 10\n        },\n        {\n            \"province\": \"aaaaa\",\n            \"min\": 10,\n            \"max\": 10,\n            \"median\": 0,\n            \"average\": 10\n        },\n        {\n            \"province\": \"asdf\",\n            \"min\": 0,\n            \"max\": 0,\n            \"median\": 1,\n            \"average\": 0\n        },\n        {\n            \"province\": \"sfasfa\",\n            \"min\": 43141,\n            \"max\": 43141,\n            \"median\": 0,\n            \"average\": 43141\n        }\n    ]\n}"
+						},
+						{
+							"name": "invalid_token_response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_fetch}}/v1/commodities/report",
+									"host": [
+										"{{url_fetch}}"
+									],
+									"path": [
+										"v1",
+										"commodities",
+										"report"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jun 2021 16:43:31 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"message\": \"Token has expired\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url_auth",
+			"value": "http://127.0.0.1:8089/"
+		},
+		{
+			"key": "url_fetch",
+			"value": "http://127.0.0.1:1323/"
+		},
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyMjk4ODkyMSwianRpIjoiMjJlYzFhYjItZDA2Yi00NzkzLTk3NDktNTI5YjhmODc4ZDQ3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEyMzQyMzEyMjAiLCJuYmYiOjE2MjI5ODg5MjEsImV4cCI6MTYyMjk4OTgyMX0.jd_wtjRpBsWIrYboQPwU78mmAJuMGgxuuM0BUfTvIEg"
+		}
+	]
+}
