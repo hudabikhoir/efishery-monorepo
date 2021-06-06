@@ -19,7 +19,9 @@ type GetCommodityByIDResponse struct {
 
 //GetCommoditieResponse Get commoditie by tag response payload
 type GetCommoditiesResponse struct {
-	Commodities []*GetCommodityByIDResponse `json:"commodities"`
+	Code    string                      `json:"code"`
+	Message string                      `json:"message"`
+	Data    []*GetCommodityByIDResponse `json:"data"`
 }
 
 //NewGetCommodityByIDResponse construct GetCommodityByIDResponse
@@ -48,6 +50,8 @@ func NewGetCommoditiesResponse(commodities []commodity.Commodity) *GetCommoditie
 	}
 
 	return &GetCommoditiesResponse{
+		"00",
+		"Success",
 		commoditiesResponses,
 	}
 }
