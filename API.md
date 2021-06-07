@@ -7,8 +7,8 @@ This documentation contains the features available in the Efishery Tech Test rep
 
 | Key | Value | Type |
 | --- | ------|-------------|
-| url_auth | http://127.0.0.1:9000/ |  |
-| url_fetch | http://127.0.0.1:9001/ |  |
+| url_auth | http://127.0.0.1:5000/ |  |
+| url_fetch | http://127.0.0.1:5001/ |  |
 | token | eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyMjk4ODkyMSwianRpIjoiMjJlYzFhYjItZDA2Yi00NzkzLTk3NDktNTI5YjhmODc4ZDQ3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEyMzQyMzEyMjAiLCJuYmYiOjE2MjI5ODg5MjEsImV4cCI6MTYyMjk4OTgyMX0.jd_wtjRpBsWIrYboQPwU78mmAJuMGgxuuM0BUfTvIEg |  |
 
 <br>
@@ -40,7 +40,7 @@ At this endpoint, the user is asked to enter the mobile number and password that
 ```bash
 Method: POST
 Type: RAW
-URL: http://127.0.0.1:9000/login
+URL: http://127.0.0.1:5000/login
 ```
 
 ***Body:***
@@ -111,7 +111,7 @@ Endpoint profile user when they are login. This endpoint is to ensure that the l
 ```bash
 Method: GET
 Type: 
-URL: http://127.0.0.1:9000/me
+URL: http://127.0.0.1:5000/me
 ```
 
 ***More example Requests/Responses:***
@@ -157,7 +157,7 @@ At this endpoint the user is asked to enter a name, cellphone number, and role. 
 ```bash
 Method: POST
 Type: RAW
-URL: http://127.0.0.1:9000/registration
+URL: http://127.0.0.1:5000/registration
 ```
 
 ***Body:***
@@ -236,7 +236,7 @@ Displays all commodity data from all over Indonesia along with prices in rupiah 
 ```bash
 Method: GET
 Type: 
-URL: http://127.0.0.1:9001/v1/commodities
+URL: http://127.0.0.1:5001/v1/commodities
 ```
 
 ***More example Requests/Responses:***
@@ -316,7 +316,7 @@ Displays commodity reports by province and weekly
 ```bash
 Method: GET
 Type: 
-URL: http://127.0.0.1:9001/v1/commodities/report
+URL: http://127.0.0.1:5001/v1/commodities/report
 ```
 
 

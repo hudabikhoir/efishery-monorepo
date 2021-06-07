@@ -3,3 +3,7 @@ auth-app/__pycache__
 auth-app/migrations/__pycache__
 fetch-app/business/auth/.DS_Store
 .DS_Store
+auth-app/migrations/versions
+fetch-app/config/config.yaml
+efishery.db
+*.db

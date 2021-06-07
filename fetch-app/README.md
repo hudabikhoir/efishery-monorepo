@@ -6,6 +6,7 @@ Built using a hexagonal architecture so that the module can be structured proper
 ## Technology
 - Golang
 - Echo Framework
+- Linq (language integrated query)
 - Docker
 - Support mysql, sqlite and mongodb driver
 
