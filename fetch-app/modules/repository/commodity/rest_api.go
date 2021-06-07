@@ -4,8 +4,8 @@ import (
 	"bufio"
 	"bytes"
 	"efishery/business/commodity"
+	"efishery/config"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/http/httputil"
@@ -40,7 +40,11 @@ func NewRESTAPIRepository() *HTTPRepository {
 func (repo *HTTPRepository) FetchCommodities() ([]commodity.Commodity, error) {
 	var commodities []commodity.Commodity
 	var commodity commodity.Commodity
-	response, err := http.Get("https://stein.efishery.com/v1/storages/5e1edf521073e315924ceab4/list/")
+	config := config.GetConfig()
+	url := config.Endpoint.Commodities
+	endpoint := url + "/v1/storages/5e1edf521073e315924ceab4/list/"
+
+	response, err := http.Get(endpoint)
 
 	if err != nil {
 		return nil, err
@@ -72,7 +76,11 @@ func (repo *HTTPRepository) FetchCommodities() ([]commodity.Commodity, error) {
 
 //FetchPriceConverter Find commodity based on given ID. Its return nil if not found
 func (repo *HTTPRepository) FetchPriceConverter() (float64, error) {
-	req, err := http.NewRequest("GET", "https://free.currconv.com/api/v7/convert/", nil)
+	config := config.GetConfig()
+	url := config.Endpoint.ConvertCurrency
+	endpoint := url + "/api/v7/convert/"
+
+	req, err := http.NewRequest("GET", endpoint, nil)
 
 	if err != nil {
 		return 0, err
@@ -85,7 +93,6 @@ func (repo *HTTPRepository) FetchPriceConverter() (float64, error) {
 	q.Add("q", "USD_IDR")
 	req.URL.RawQuery = q.Encode()
 
-	fmt.Println(req.URL.String())
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return 0, err

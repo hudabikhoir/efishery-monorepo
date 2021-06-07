@@ -4,8 +4,8 @@ import (
 	"bufio"
 	"bytes"
 	"efishery/business/auth"
+	"efishery/config"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/http/httputil"
@@ -33,9 +33,13 @@ func NewRESTAPIRepository() *HTTPRepository {
 
 //FetchPriceConverter Find auth based on given ID. Its return nil if not found
 func (repo *HTTPRepository) FetchMeByToken(Token string) (*auth.User, error) {
+	config := config.GetConfig()
 	var user *auth.User
 	var bearer = "Bearer " + Token
-	req, err := http.NewRequest("GET", "http://127.0.0.1:8089/me", nil)
+	var url = config.Endpoint.Auth
+	var endpoint = url + "/me"
+
+	req, err := http.NewRequest("GET", endpoint, nil)
 
 	// add authorization header to the req
 	req.Header.Add("Authorization", bearer)
@@ -45,7 +49,6 @@ func (repo *HTTPRepository) FetchMeByToken(Token string) (*auth.User, error) {
 	}
 
 	req.AddCookie(&http.Cookie{Name: "c", Value: "ccc"})
-	fmt.Println(req.URL.String())
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return nil, err
@@ -72,7 +75,6 @@ func (repo *HTTPRepository) FetchMeByToken(Token string) (*auth.User, error) {
 		return nil, err
 	}
 
-	fmt.Println("responseData", string(responseData))
 	var responseObject Response
 	json.Unmarshal(responseData, &responseObject)
 
