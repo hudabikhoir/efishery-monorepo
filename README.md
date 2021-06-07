@@ -2,7 +2,11 @@
 
 efishery monorepo is made for efhisery technical test purposes. I'm using python to handle authentication. The token generated from this python will be used later in the fetch-app that uses golang. Every request received by fetch-app will check the JWT token to auth-app. If jwt is invalid it will return an error. 
 
-In addition, the fetch-app also checks the roles and permissions of each user. For more details, you can see the following diagram. After that, proceed with fetching data to get commodity and currency data from an external API.In order not to burden the server, we do caching when making requests to external APIs
+In addition, the fetch-app also checks the roles and permissions of each user. For more details, you can see the following diagram. After that, proceed with fetching data to get commodity and currency data from an external API.In order not to burden the server, we do caching when making requests to external APIs.For more details, you can see the C4 model below
+
+![Efishery C4 Model Diagram](https://user-images.githubusercontent.com/35209506/120984193-9eef9f00-c7a4-11eb-9cda-2a37d1cd9075.png)
+
+
 ## auth-app
 Microservice created for registration, login, and token checking. Built with the python programming language and more emphasis on a simple structure. You can check more information regarding this API at the following [link](https://github.com/hudabikhoir/efishery-monorepo/blob/master/auth-app/README.md)
 
