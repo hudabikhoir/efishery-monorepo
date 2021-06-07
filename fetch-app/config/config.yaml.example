@@ -1,4 +1,4 @@
-port: 1323
+port: 5001
 database:
   driver: "sqlite" #possible value are mongodb or mysql
   address: "127.0.0.1"
@@ -12,3 +12,7 @@ cache:
   port: 6379
   password: ""
   dbnumber: 1
+endpoint:
+  auth: "http://127.0.0.1:5000"
+  commodities: "https://stein.efishery.com/"
+  convert_currency: "https://free.currconv.com"

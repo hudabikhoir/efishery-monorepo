@@ -25,6 +25,11 @@ type AppConfig struct {
 		Password string `yaml:"password"`
 		DBNumber int    `yaml:"dbnumber"`
 	}
+	Endpoint struct {
+		Auth            string `yaml:"auth"`
+		Commodities     string `yaml:"commodities"`
+		ConvertCurrency string `yaml:"convertcurrency"`
+	}
 }
 
 var lock = &sync.Mutex{}
@@ -44,7 +49,7 @@ func GetConfig() *AppConfig {
 
 func initConfig() *AppConfig {
 	var defaultConfig AppConfig
-	defaultConfig.Port = 1323
+	defaultConfig.Port = 5001
 	defaultConfig.Database.Driver = "sqlite"
 	defaultConfig.Database.Name = "efishery-test"
 	defaultConfig.Database.Address = ""
