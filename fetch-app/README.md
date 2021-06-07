@@ -11,8 +11,17 @@ Built using a hexagonal architecture so that the module can be structured proper
 - Support mysql, sqlite and mongodb driver
 
 ## Installation
-- `cp config/config.yaml.example config/config.yaml`
-- run `./run.sh` on your terminal
+
+there are 2 ways to run fetch-app manually and docker. To run the fetch-app manually we use reflex so when there is a change in our code, the program will automatically compile it. You can use it for the development process. The installation is as follows:
+```
+    $ `cp config/config.yaml.example config/config.yaml`
+    $ run `./run.sh` on your terminal
+```
+or you can build with docker file
+```
+    $ docker build -t efishery-go .
+    $ docker run -p 5001:5001 -it efishery-go
+```
 - you can access `http://127.0.0.1:5001/` on your browser or postman
 
 ## Module Structure
