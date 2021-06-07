@@ -3,7 +3,6 @@ package middleware
 import (
 	"efishery/api/common"
 	serviceAuth "efishery/business/auth"
-	"fmt"
 	"net/http"
 	"strings"
 
@@ -24,7 +23,6 @@ func JWTMiddleware(auth serviceAuth.Service) echo.MiddlewareFunc {
 			}
 
 			signature := strings.Split(c.Request().Header.Get("Authorization"), " ")
-			fmt.Println(signature)
 			if len(signature) < 2 {
 				return c.JSON(http.StatusForbidden, common.NewMissingHeaderResponse())
 			}
@@ -36,12 +34,15 @@ func JWTMiddleware(auth serviceAuth.Service) echo.MiddlewareFunc {
 			token, _ := jwt.ParseWithClaims(signature[1], claim, func(token *jwt.Token) (interface{}, error) {
 				return []byte("<screet-key>"), nil
 			})
-			fmt.Println(c.Request().URL.Path)
 
 			user, err := auth.Validate(signature[1])
-			fmt.Println(user)
 			if err != nil || user.Role == 0 {
 				return c.JSON(http.StatusForbidden, common.NewExpiredTokenErrorResponse())
+			}
+
+			// check role who access report
+			if user.Role != 1 && strings.Contains(c.Request().URL.Path, "/report") {
+				return c.JSON(http.StatusForbidden, common.NewForbiddenResponse())
 			}
 
 			method, ok := token.Method.(*jwt.SigningMethodHMAC)

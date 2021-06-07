@@ -14,6 +14,14 @@ func NewInternalServerErrorResponse() DefaultResponse {
 	}
 }
 
+//NewExpiredTokenErrorResponse default internal server error response
+func NewExpiredTokenErrorResponse() DefaultResponse {
+	return DefaultResponse{
+		403,
+		"Token has expired",
+	}
+}
+
 //NewNotFoundResponse default not found error response
 func NewNotFoundResponse() DefaultResponse {
 	return DefaultResponse{
@@ -35,5 +43,21 @@ func NewConflictResponse() DefaultResponse {
 	return DefaultResponse{
 		409,
 		"Data has been modified",
+	}
+}
+
+//NewForbiddenResponse default for Forbidden error response
+func NewForbiddenResponse() DefaultResponse {
+	return DefaultResponse{
+		403,
+		"Forbidden",
+	}
+}
+
+//NewMissingHeaderResponse bad request caused by header missing
+func NewMissingHeaderResponse() DefaultResponse {
+	return DefaultResponse{
+		403,
+		"Missing header data",
 	}
 }
