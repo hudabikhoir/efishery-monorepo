@@ -14,8 +14,8 @@ Built using a hexagonal architecture so that the module can be structured proper
 
 there are 2 ways to run fetch-app manually and docker. To run the fetch-app manually we use reflex so when there is a change in our code, the program will automatically compile it. You can use it for the development process. The installation is as follows:
 ```
-    $ `cp config/config.yaml.example config/config.yaml`
-    $ run `./run.sh` on your terminal
+    $ cp config/config.yaml.example config/config.yaml
+    $ ./run.sh
 ```
 or you can build with docker file
 ```
